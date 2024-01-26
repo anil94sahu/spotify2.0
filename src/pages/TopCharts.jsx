@@ -2,11 +2,12 @@ import axios from 'axios';
 import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 import { SongCard } from '../components';
 import { useState } from 'react';
+import { TopTrack } from './../mock-data/TopTrack';
 
 const TopCharts = () => {
     const [country, setCountry] = useState('');
     const [activeSong, isPlaying] = useState(state => state.player);
-    const {data, isFetching, error} = useGetTopChartsQuery(country);
+    const {data, isFetching, error} = TopTrack//useGetTopChartsQuery(country);
 
     if(isFetching) return <Loading title="Loading top chart" />
     

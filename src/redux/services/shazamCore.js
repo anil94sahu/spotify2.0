@@ -17,12 +17,12 @@ export const shazamCoreApi = createApi({
     reducerPath: 'shazamCoreApi',
     baseQuery: fetchBaseQuery({baseUrl: 'https://shazam-api6.p.rapidapi.com/shazam',
     prepareHeaders: (headers) => {
-        headers.set('X-RapidAPI-Key', '3ca82aceb1msh57c5b13df6b27edp183f3cjsn5de79c87c5f5');
+        headers.set('X-RapidAPI-Key', process.env.VITE_SHAZAM_CORE_RAPID_API_KEY);
         return headers;
     }
 }),
 endpoints: (builder) => ({
-    getTopCharts: builder.query({query: () => '/top_tracks_country?limit=50&country_code=IN'}),
+    getTopCharts: builder.query({query: () => '/top_tracks_country'}),
     getSongDetails: builder.query({query: (songid) => `/tracks/details/track_id=${songid}` }),
     getSongRelated: builder.query({query: (songid) => `/tracks/related?track_id=${songid}`}),
     getArtistDetails: builder.query({query: (artistId) => `/about_artist?artist_id=${artistId}`}),

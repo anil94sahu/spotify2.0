@@ -8,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import {setActiveSong, playPause} from '../redux/features/playerSlice';
 import PlayPause from './PlayPause';
+import { TopTrackInCountry } from '../mock-data/TopTrackInCountry';
 
 const TopChartCard = ({song, i, isPlaying, activeSong , handlePauseClick, handlePlayClick}) => (
   <div className='w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2'>
@@ -36,7 +37,7 @@ const TopChartCard = ({song, i, isPlaying, activeSong , handlePauseClick, handle
 const TopPlay = () => {
   const dispatch = useDispatch();
   const {activeSong, isPlaying} = useSelector(state=> state.player);
-  const {data} = useGetTopChartsQuery();
+  const data = TopTrackInCountry//useGetTopChartsQuery();
   const divRef = useRef(null);
   useEffect(() => {
     divRef.current.scrollIntoView({behaviour: 'smooth'})
